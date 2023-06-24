@@ -12,9 +12,13 @@
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-red-100 flex justify-center items-center h-[600px]">
-    <div id="main" class="relative h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
-        <h1 class="font-bold text-4xl absolute top-[50px]">Sign Up</h1>
+<body class="bg-gray-300 flex justify-center items-center h-[600px]">
+
+    <div id="main" class="relative h-[500px] w-[800px]  rounded-md flex justify-around bg-white items-center shadow-xl shadow-slate-500 overflow-hidden">
+
+        <div class="flex flex-col justify-around items-center h-full w-[380px] bg-gradient-to-r from-green-400 to-lime-500 translate-x-[-25px]">
+
+            <h1 class="font-bold text-4xl absolute top-[50px]">Sign Up</h1>
 
         <div id="form">
             <form action="/" id="loginBox" class="flex flex-col justify-center items-center" method="post">
@@ -22,11 +26,14 @@
                 <input name="email" placeholder="Email" type="email" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
                 <input name="password" placeholder="Password" type="password" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
                 <input name="conf" placeholder="Confirm Password" minLength="6" type="password" id="confInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
-                <button id="loginButton" class="absolute h-8 w-32 bg-blue-500 bottom-24 rounded-xl" type="submit" disabled>Sign Up</button>
+                <button id="loginButton" class="absolute h-8 w-32 bg-lime-400 bottom-24 rounded-xl" type="submit" disabled>Sign Up</button>
                 <button id="loginRegisterButton" class="absolute h-8 w-44 bottom-12 m-2 text-sm" onclick="redirectToLogin(event)">Already have an Account?</button>
             </form>
         </div>
     </div>
+    <img src="/images/loginPage.avif" alt="login" class="h-[400px] w-[400px]">
+</div>
+
 
     <script>
         const passwordInput = document.querySelector('input[name="password"]');
