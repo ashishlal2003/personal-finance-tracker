@@ -11,7 +11,8 @@ const {
 
 const {
     addTrans,
-    gettrans
+    gettrans,
+    deleteTrans
 } = require('../controllers/transController');
 
 const router = express.Router();
@@ -34,5 +35,7 @@ router.post('/logout', logout);
 router.post('/add', addTrans);
 
 router.get('/trans', isAuth, gettrans);
+
+router.post('/del', deleteTrans);
 
 module.exports = router;
