@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class = "bg-red-100 flex justify-center items-center h-[600px]">
+    <div id="main" class = "h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
+        <h1 class = "font-bold text-4xl">Sgin Up</h1>
+
+        <div id="form" >
+            <form id="loginBox" class = "flex flex-col">
+                <input placeholder="Enter your Name" className="loginInput" />
+                <input placeholder="Email" type="email" className="loginInput" />
+                <input placeholder="Password" type="password" className="loginInput" />
+                <input placeholder="Confirm Password" minLength={6} type="password" className="loginInput" />
+                <button className="loginButton" type="submit">Sign Up</button>
+        
+                <button className="loginRegisterButton">Already have a Account?</button>
+              </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- email name password confirm password -->
