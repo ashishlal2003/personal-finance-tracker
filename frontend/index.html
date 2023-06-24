@@ -13,13 +13,6 @@
     <div id="main" class="bg-white flex flex-col w-[900px] h-[500px] rounded-md p-6 shadow-xl shadow-slate-500 ">
         <h1 class="text-4xl m-2">Finance Tracker</h1>
         <div id="inputForm">
-            <form id="task-form">
-                <div class="input-field col s12">
-                  <input type="text" name="task" id="task">
-                  <label for="task">New Task</label>
-                </div>
-                <input type="submit" value="Add Task" class="btn">
-              </form>
               
             <form id="form" class="m-4">
                 <input placeholder="Transaction Detail" type="text" id="details"
@@ -70,10 +63,8 @@
             
         }
 
-        myButton.addEventListener('click', function (e) {
-            if (detail.value === '' || amount.value === '') {
+       btn.addEventListener('click', function (e) {
                 alert('Fill all fields');
-            }
         });
 
 
