@@ -8,29 +8,22 @@
 </head>
 
 <body class = "bg-red-100 flex justify-center items-center h-[600px]">
-    <div id="main" class = "h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
-        <h1 class = "font-bold text-4xl">Sign Up</h1>
+    <div id="main" class = "relative h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
+        <h1 class = "font-bold text-4xl absolute top-[50px]">Login</h1>
 
         <div id="form" >
-            <form id="loginBox" class = "flex flex-col">
+            <form id="loginBox" class = "flex flex-col justify-center items-center ">
                 <input placeholder="Enter your Name" class="loginInput" />
                 <input placeholder="Email" type="email" class="loginInput" />
                 <input placeholder="Password" type="password" class="loginInput" />
                 <input placeholder="Confirm Password" minLength={6} type="password" class="loginInput" />
-                <button class="loginButton" type="submit">Sign Up</button>
+                <button id="loginButton" class = "absolute h-8 w-32 bg-blue-500 bottom-24 rounded-xl" type="submit">Sign In</button>
         
-                <button class="bg-blue-100" onclick="location.href='signUp.html'">Already have a Account?</button>
+                <button id="loginRegisterButton" class = "absolute h-8 w-44 bottom-12 m-2 text-sm" href = "">Don't have a Account?</button>
               </form>
         </div>
     </div>
 </body>
-
-<!-- 
-<script>
-    function goToLoginPage() {
-      window.location.href = './signUp.html';
-    }
-    </script> -->
 
 </html>
 <!-- email name password confirm password -->
