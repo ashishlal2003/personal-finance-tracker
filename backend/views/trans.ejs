@@ -9,78 +9,57 @@
     <title>Finance Tracker</title>
 </head>
 
-<body class="flex justify-center items-center h-[600px]">
-    <div id="main" class="bg-white flex flex-col w-[900px] h-[500px] rounded-md p-6 shadow-xl shadow-slate-500 ">
-        <h1 class="text-4xl m-2">Finance Tracker for <%= user.name %></h1>
+<body class="flex justify-center items-center h-[600px] bg-gray-300">
+    <div id="main" class="bg-white flex flex-col w-[900px] h-[500px] rounded-md p-6 shadow-lg shadow-slate-500 ">
+        <div class="flex justify-between items-center">
+            <h1 class="text-4xl m-2 font-sans">Finance Tracker for <%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %></h1>
+            <p class="mr-6">Available Balance : 5000000</p>
+        </div>
+        
         <div id="inputForm">
               
             <form action="/add" id="form" class="m-4" method="post">
                 <input name="details" placeholder="Transaction Detail" type="text" id="details"
-                    class="m-2 h-[70px] w-[250px] p-2 border-b-[2px] text-xl focus:outline-none" required/>
+                    class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent text-white" required/>
 
                 <input name="amount" placeholder="Transaction Amount" type="amount" id="amount"
-                    class="m-2 h-[70px] w-[250px] p-2 border-b-[2px] text-xl focus:outline-none" required/>
+                    class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent " required/>
 
-                <select name="typetrans" id="type" class="border-[2px] border-black focus:outline-none m-2  w-[100px] p-2"
+                <select name="typetrans" id="type" class="border-[2px] border-black rounded-lg bg-transparent focus:outline-none m-2  w-[100px] p-2"
                     id="transactionType" required>
                     <option value="select" class="p-4 bg-white text-md ">select</option>
                     <option value="Debit" class="p-4 bg-white text-md ">Debit</option>
                     <option value="Credit" class="p-4 bg-white text-md">Credit</option>
                 </select>
                 <!-- <i class="fas fa-plus bg-blue-500 text-white rounded-sm cursor-pointer w-10 text-2xl text-center translate-x-[80px]"></i> -->
-                <button id="addBtn" class="h-8 w-32 bg-blue-500 rounded-xl cursor-pointer" value="Add"> Add </button>
+                <button id="addBtn" class="h-12 w-32 bg-green-700 text-white rounded-lg cursor-pointer" value="Add"> Add </button>
 
             </form>
         </div>
 
         <ul id="track" class="w-full h-[400px] rounded-sm border-[0.5px] border-gray-400 p-2 flex flex-col items-center gap-4 overflow-y-scroll scroll-smooth">
             <% transactions.forEach(transaction => { %>
-                <li class="w-full border-[1px] border-t-0 border-b-gray-400 p-4 flex gap-6 hover:shadow-slate-500 hover:shadow-sm">
-                    <p><%= transaction.detail %></p>
-                    <p><%= transaction.amount %></p>
+                <li class="w-full border-[1px] border-t-0 border-b-gray-400 p-4 flex gap-8 shadow-sm shadow-slate-500 hover:shadow-lg relative font-sans">
 
-                    <div class="flex-end gap-4">
-                        <!-- <i class="fas fa-pencil-alt"></i> -->
+                    <p class="ml-6"><%= transaction.detail %></p>
+                    <p class="absolute left-44"><%= transaction.amount %></p>
+                    <p class="absolute right-[400px] bg-red-700 rounded-full h-8 w-16 text-center pt-1 text-white">Debit</p>
+
+                    <div class="flex-end absolute right-12">
                         <form action="/del" method="post">
                             <input type="hidden" name="transactionId" value="<%= transaction._id %>">
+
                            <button class="far fa-trash-alt" type="submit"></button>
                         </form>
                     </div>
                 </li>
             <% }); %>
         </ul>
-        
     </div>
 
     <form action="/logout" method="POST">
-        <button type="submit">Logout</button>
-      </form>
-
-
-    <script>
-    //     const btn = document.getElementById('addBtn');
-    //     const form = document.getElementById('form');
-    //     const detail = document.getElementById('details');
-    //     const amount = document.getElementById('amount');
-    //     const transactionType = document.getElementById('transactionType');
-
-    //     loadEventListeners();
-
-    //     function loadEventListeners() {
-    //         form.addEventListener('submit', addTask);
-    //     }
-
-    //     const addTask = (e) => {
-            
-    //     }
-
-    //    btn.addEventListener('click', function (e) {
-    //             alert('Fill all fields');
-    //     });
-
-
-    </script>
-
+        <button type="submit" class="absolute bottom-6 right-20 h-10 w-28 bg-green-700 text-white rounded-lg cursor-pointer">Logout</button>
+    </form>
 
 </body>
 
