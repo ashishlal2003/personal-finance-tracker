@@ -22,7 +22,7 @@
                 <input name="details" placeholder="Transaction Detail" type="text" id="details"
                     class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent" required/>
 
-                <input name="amount" placeholder="Transaction Amount" type="amount" id="amount"
+                <input name="amount" placeholder="Transaction Amount" type="number" id="amount"
                     class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent " required/>
 
                 <select name="typetrans" id="type" class="border-[2px] border-black rounded-lg bg-transparent focus:outline-none m-2  w-[100px] p-2"
@@ -43,7 +43,15 @@
 
                     <p class="ml-6"><%= transaction.detail %></p>
                     <p class="absolute left-44"><%= transaction.amount %></p>
-                    <p class="absolute right-[400px] bg-red-700 rounded-full h-8 w-16 text-center pt-1 text-white">Debit</p>
+                    <% if(transaction.type === "Debit") { %>
+                        <p class="absolute right-[400px] bg-red-700 rounded-full h-8 w-16 text-center pt-1 text-white">Debit</p>
+                    <% } else { %>
+                        <p class="absolute right-[400px] bg-green-700 rounded-full h-8 w-16 text-center pt-1 text-white">Credit</p>
+                    <% } %>
+
+                    <p class="absolute right-[100px]">Date added: <%= new Date().toLocaleDateString() %></p>
+
+                    
 
                     <div class="flex-end absolute right-12">
                         <form action="/del" method="post">

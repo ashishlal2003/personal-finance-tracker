@@ -21,7 +21,7 @@ const transactionSchema = new mongoose.Schema({
     required: true
   },
   balance: {
-    type: Decimal128,
+    type: Number,
     default: 0
   }
 });
