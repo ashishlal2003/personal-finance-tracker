@@ -15,10 +15,10 @@
         <div id="inputForm">
               
             <form id="form" class="m-4">
-                <input placeholder="Transaction Detail" type="text" id="details"
+                <input placeholder="Transaction Detail" required type="text" id="details"
                     class="m-2 h-[70px] w-[250px] p-2 border-b-[2px] text-xl focus:outline-none" />
 
-                <input placeholder="Transaction Amount" type="amount" id="amount"
+                <input placeholder="Transaction Amount" required type="amount" id="amount"
                     class="m-2 h-[70px] w-[250px] p-2 border-b-[2px] text-xl focus:outline-none" />
 
                 <select id="type" class="border-[2px] border-black focus:outline-none m-2  w-[100px] p-2"
@@ -49,22 +49,33 @@
     <script>
         const btn = document.getElementById('addBtn');
         const form = document.getElementById('form');
-        const detail = document.getElementById('details');
-        const amount = document.getElementById('amount');
+        // const detail = document.getElementById('details');
+        // const amount = document.getElementById('amount');
         const transactionType = document.getElementById('transactionType');
 
-        loadEventListeners();
-
-        function loadEventListeners() {
-            form.addEventListener('submit', addTask);
-        }
-
-        const addTask = (e) => {
-            
-        }
-
+        const ulTag = document.getElementById('track') 
        btn.addEventListener('click', function (e) {
-                alert('Fill all fields');
+        
+            e.preventDefault();
+            
+
+            const liTag = document.createElement('li');
+            li.classList = "w-full border-[1px] border-t-0 border-b-gray-400 p-4 flex gap-6 hover:shadow-slate-500 hover:shadow-sm;"
+
+            const detail = document.getElementById('details').value;
+            const amount = document.getElementById('amount').value;
+
+            const pDetail = document.createElement('p');
+            p.textContent = detail;
+
+            liTag.appendChild(pDetail);
+
+            const pAmount = document.createElement('p');
+            pAmount.textContent = amount;
+            liTag.appendChild(pDetail);
+
+
+            ulTag.appendChild(liTag);
         });
 
 
