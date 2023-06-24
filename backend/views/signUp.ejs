@@ -18,10 +18,10 @@
 
         <div id="form">
             <form action="/" id="loginBox" class="flex flex-col justify-center items-center" method="post">
-                <input name="name" placeholder="Enter your Name" class="loginInput"/>
-                <input name="email" placeholder="Email" type="email" class="loginInput"/>
-                <input name="password" id="passwordInput" placeholder="Password" type="password" class="loginInput"/>
-                <input name="conf" id="confInput" placeholder="Confirm Password" minLength="6" type="password" class="loginInput"/>
+                <input name="name" placeholder="Enter your Name" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
+                <input name="email" placeholder="Email" type="email" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
+                <input name="password" placeholder="Password" type="password" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
+                <input name="conf" placeholder="Confirm Password" minLength="6" type="password" id="confInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
                 <button id="loginButton" class="absolute h-8 w-32 bg-blue-500 bottom-24 rounded-xl" type="submit" disabled>Sign Up</button>
                 <button id="loginRegisterButton" class="absolute h-8 w-44 bottom-12 m-2 text-sm" onclick="redirectToLogin(event)">Already have an Account?</button>
             </form>
@@ -29,8 +29,8 @@
     </div>
 
     <script>
-        const passwordInput = document.getElementById("passwordInput");
-        const confInput = document.getElementById("confInput");
+        const passwordInput = document.querySelector('input[name="password"]');
+        const confInput = document.querySelector('input[name="conf"]');
         const loginButton = document.getElementById("loginButton");
 
         // Add event listeners to the password and confirm password inputs
@@ -44,8 +44,10 @@
             // Enable or disable the login button based on the matching passwords
             if (password === conf) {
                 loginButton.disabled = false;
+                loginButton.style.backgroundColor = ""; // Remove the grayed-out appearance
             } else {
                 loginButton.disabled = true;
+                loginButton.style.backgroundColor = "#999999"; // Apply the grayed-out appearance
             }
         }
 

@@ -3,6 +3,7 @@ const express = require('express');
 const User = require('../models/userSchema');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const Transaction = require('../models/transactionSchema');
 
 const isAuth = (req,res,next)=>{
     if(req.session.isAuth){
@@ -66,7 +67,10 @@ const postLogin = async(req,res,next) => {
         req.session.isAuth = true;
       req.session.user = user;
 
-        res.render('trans',{ user});
+      const transactions = await Transaction.find({ creator: user._id });
+
+  
+      res.render('trans', { transactions, user });
       
       }
   
