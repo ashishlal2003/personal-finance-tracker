@@ -19,6 +19,19 @@ const addTrans = async (req, res, next) => {
       await transaction.save();
       console.log(transaction);
   
+      // Retrieve the current available balance from the user object or database
+      const balance = user.balance || 0;
+  
+      // Update the available balance based on the transaction type
+      if (typetrans === 'Debit') {
+        user.balance = balance - amount;
+      } else if (typetrans === 'Credit') {
+        user.balance = balance + amount;
+      }
+    console.log(user.balance);
+      // Save the updated available balance to the user object or update it in the database
+      await user.save();
+  
       const transactions = await Transaction.find({ creator: user._id });
       console.log(transactions);
   
@@ -28,6 +41,7 @@ const addTrans = async (req, res, next) => {
       res.sendStatus(500);
     }
   };
+  
   
   const deleteTrans = async (req, res, next) => {
     try {

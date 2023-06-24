@@ -1,3 +1,4 @@
+const { Decimal128 } = require('bson');
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
@@ -18,6 +19,10 @@ const transactionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  balance: {
+    type: Decimal128,
+    default: 0
   }
 });
 

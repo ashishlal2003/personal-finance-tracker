@@ -13,14 +13,14 @@
     <div id="main" class="bg-white flex flex-col w-[900px] h-[500px] rounded-md p-6 shadow-lg shadow-slate-500 ">
         <div class="flex justify-between items-center">
             <h1 class="text-4xl m-2 font-sans">Finance Tracker for <%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %></h1>
-            <p class="mr-6">Available Balance : 5000000</p>
+            <p class="mr-6">Available Balance : <%= user.balance %></p>
         </div>
         
         <div id="inputForm">
               
             <form action="/add" id="form" class="m-4" method="post">
                 <input name="details" placeholder="Transaction Detail" type="text" id="details"
-                    class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent text-white" required/>
+                    class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent" required/>
 
                 <input name="amount" placeholder="Transaction Amount" type="amount" id="amount"
                     class="m-2 h-[70px] w-[250px] p-2 border-b-gray-400 border-b-[1px] text-xl focus:outline-none bg-transparent " required/>
