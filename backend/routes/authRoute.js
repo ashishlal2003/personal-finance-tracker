@@ -4,9 +4,15 @@ const {
     getLogin,
     postSignUp,
     postLogin,
-    logout
+    logout,
+    isAuth
 
 } = require('../controllers/authController');
+
+const {
+    addTrans,
+    gettrans
+} = require('../controllers/transController');
 
 const router = express.Router();
 
@@ -24,5 +30,9 @@ router.post('/trans', postLogin);
 
 //POST the logout
 router.post('/logout', logout);
+
+router.post('/add', addTrans);
+
+router.get('/trans', isAuth, gettrans);
 
 module.exports = router;

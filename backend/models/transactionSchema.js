@@ -1,22 +1,23 @@
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
-  description: {
+  detail: {
     type: String,
-    required: true,
+    required: true
   },
   amount: {
     type: Number,
-    required: true,
+    required: true
   },
   type: {
     type: String,
-    enum: ['debit', 'credit'],
     required: true,
+    enum: ['Debit', 'Credit']
   },
-  date: {
-    type: Date,
-    default: Date.now,
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 });
 

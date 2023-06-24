@@ -8,14 +8,14 @@
 </head>
 
 <body class = "bg-red-100 flex justify-center items-center h-[600px]">
-    <div id="main" class = "relative h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
+    <div id="main" class = "relative h-[400px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
         <h1 class = "font-bold text-4xl absolute top-[50px]">Login</h1>
 
         <div id="form" >
             <form action="/trans" id="loginBox" class = "flex flex-col" method="post">
-                <input name="email" placeholder="Email" type="email" class="loginInput" />
-                <input name="password" placeholder="Password" type="password" class="loginInput" />
-                <button id="loginButton" class = "absolute h-8 w-32 bg-blue-500 bottom-24 rounded-xl" type="submit">Sign In</button>
+                <input name="email" placeholder="Email" type="email" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
+                <input name="password" placeholder="Password" type="password" id="loginInput" class="m-2 h-[30px] w-[200px] p-2 border-[2px] rounded-md" required/>
+                <button id="loginButton" class = "translate-y-[50px] h-8 w-32 bg-blue-500 rounded-xl" type="submit">Sign In</button>
         
                 <button id="loginRegisterButton" class = "absolute h-8 w-44 bottom-12 m-2 text-sm" onclick="redirectToSignup(event)">Don't have a Account?</button>
               </form>
