@@ -29,6 +29,24 @@ const addTrans = async (req, res, next) => {
     }
   };
   
+  const deleteTrans = async (req, res, next) => {
+    try {
+      const transactionId = req.body.transactionId; // Assuming you have a hidden input field in your form containing the transaction ID
+      
+      // Delete the transaction from the database using the transactionId
+      await Transaction.findByIdAndDelete(transactionId);
+      const user = req.session.user;
+
+      const transactions = await Transaction.find({ creator: user._id });
+  
+      // Redirect the user back to the /trans page after deleting the transaction
+      res.render('trans', { transactions, user });
+    } catch (error) {
+      console.error(error);
+      res.sendStatus(500);
+    }
+  };
+  
 
 const gettrans = async(req,res,next) => {
     res.render('trans');
@@ -36,5 +54,6 @@ const gettrans = async(req,res,next) => {
 
 module.exports = {
     addTrans,
-    gettrans
+    gettrans,
+    deleteTrans
 }
