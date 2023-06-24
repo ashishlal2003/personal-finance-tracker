@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add the following CSS styles */
+        button:disabled {
+            background-color: #999999;
+            cursor: not-allowed;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-100 flex justify-center items-center h-[600px]">
+    <div id="main" class="relative h-[500px] w-[400px] bg-white rounded-xl flex justify-center items-center flex-col">
+        <h1 class="font-bold text-4xl absolute top-[50px]">Sign Up</h1>
+
+        <div id="form">
+            <form action="/" id="loginBox" class="flex flex-col justify-center items-center" method="post">
+                <input name="name" placeholder="Enter your Name" class="loginInput"/>
+                <input name="email" placeholder="Email" type="email" class="loginInput"/>
+                <input name="password" id="passwordInput" placeholder="Password" type="password" class="loginInput"/>
+                <input name="conf" id="confInput" placeholder="Confirm Password" minLength="6" type="password" class="loginInput"/>
+                <button id="loginButton" class="absolute h-8 w-32 bg-blue-500 bottom-24 rounded-xl" type="submit" disabled>Sign Up</button>
+                <button id="loginRegisterButton" class="absolute h-8 w-44 bottom-12 m-2 text-sm" onclick="redirectToLogin(event)">Already have an Account?</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("passwordInput");
+        const confInput = document.getElementById("confInput");
+        const loginButton = document.getElementById("loginButton");
+
+        // Add event listeners to the password and confirm password inputs
+        passwordInput.addEventListener("input", validatePassword);
+        confInput.addEventListener("input", validatePassword);
+
+        function validatePassword() {
+            const password = passwordInput.value;
+            const conf = confInput.value;
+
+            // Enable or disable the login button based on the matching passwords
+            if (password === conf) {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
+            }
+        }
+
+        function redirectToLogin(event) {
+            event.preventDefault();
+            window.location.href = "/login";
+        }
+    </script>
+</body>
+</html>
