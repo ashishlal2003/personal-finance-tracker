@@ -1,0 +1,6 @@
+express
+mongoose
+express-session
+body-parser
+bcrypt
+dotenv
