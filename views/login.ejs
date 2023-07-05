@@ -7,10 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-300 flex justify-center items-center h-[600px]">
-    <div id="main" class="relative h-[400px] w-[800px] rounded-md flex justify-around bg-white items-center shadow-xl shadow-slate-500">
+<body class="bg-gray-300 flex justify-center items-center h-[600px] overflow-hidden">
 
-        <div class="flex flex-col justify-around items-center h-full w-[300px] rounded-md bg-gradient-to-r from-green-400 to-lime-500 translate-x-[-25px]">
+    <div id="main" class="relative h-[500px] w-[310px] md:w-[700px] lg:w-[800px] rounded-md flex justify-around bg-white items-center shadow-xl shadow-slate-500 overflow-hidden -translate-y-8 lg:-translate-y-0">
+
+        <div class="flex flex-col justify-around items-center h-full w-full md:w-[400px] lg:w-[380px] bg-gradient-to-r from-green-400 to-lime-500 md:translate-x-[-25px]">
+
             <h1 class="font-bold text-4xl absolute top-[50px]">Login</h1>
 
             <div id="form">
@@ -28,7 +30,7 @@
                 </form>
             </div>
         </div>
-        <img src="/images/loginPage.avif" alt="login" class="h-[400px] w-[400px]">
+        <img src="/images/loginPage.avif" alt="login" class="h-[400px] w-[400px]  hidden md:block">
     </div>
 </body>
 
