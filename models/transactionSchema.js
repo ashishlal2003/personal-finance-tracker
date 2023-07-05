@@ -20,10 +20,7 @@ const transactionSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  balance: {
-    type: Number,
-    default: 0
-  }
+  
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
