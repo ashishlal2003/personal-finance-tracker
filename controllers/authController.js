@@ -76,7 +76,7 @@ const postLogin = async(req,res,next) => {
   
       else{
         console.log("incorrect");
-        res.render('/');
+        res.redirect('/');
       }
     }
 

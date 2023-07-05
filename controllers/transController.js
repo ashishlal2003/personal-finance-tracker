@@ -5,43 +5,47 @@ const session = require('express-session');
 const Transaction = require('../models/transactionSchema');
 
 const addTrans = async (req, res, next) => {
-    try {
-      const { details, amount, typetrans } = req.body;
-      const user = req.session.user;
-  
-      const transaction = new Transaction({
-        detail: details,
-        amount,
-        type: typetrans,
-        creator: user._id,
-      });
-  
-      await transaction.save();
-      console.log(transaction);
-  
-      // Retrieve the current available balance from the user object or database
-      const balance = user.balance || 0;
-  
-      // Update the available balance based on the transaction type
-      if (typetrans === 'Debit') {
-        user.balance = parseInt(balance) - parseInt(amount);
-      } else if (typetrans === 'Credit') {
-        user.balance = parseInt(balance) + parseInt(amount);
-      }
-      
-    console.log(user.balance);
-      // Save the updated available balance to the user object or update it in the database
-    //   await user.save();
-  
-      const transactions = await Transaction.find({ creator: user._id });
-    //   console.log(transactions);
-  
-      res.render('trans', { transactions, user });
-    } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
+  try {
+    const { details, amount, typetrans } = req.body;
+    const userId = req.session.user._id;
+
+    const transaction = new Transaction({
+      detail: details,
+      amount,
+      type: typetrans,
+      creator: userId,
+    });
+
+    await transaction.save();
+    console.log(transaction);
+
+    // Retrieve the user from the database
+    const user = await User.findById(userId);
+
+    // Retrieve the current available balance from the user object or database
+    const balance = user.balance || 0;
+
+    // Update the available balance based on the transaction type
+    if (typetrans === 'Debit') {
+      user.balance = parseInt(balance) - parseInt(amount);
+    } else if (typetrans === 'Credit') {
+      user.balance = parseInt(balance) + parseInt(amount);
     }
-  };
+
+    console.log(user.balance);
+
+    // Save the updated available balance to the user object or update it in the database
+    await user.save();
+
+    const transactions = await Transaction.find({ creator: userId });
+
+    res.render('trans', { transactions, user });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+};
+
   
   
   const deleteTrans = async (req, res, next) => {
